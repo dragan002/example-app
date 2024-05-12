@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Note;
 
 class NoteController extends Controller
 {
@@ -12,6 +14,10 @@ class NoteController extends Controller
     public function index()
     {
         //
+
+        $userId = Auth::id();
+        $notes = Note::where('user_id', $userId)->get();
+        dd($notes);
     }
 
     /**
