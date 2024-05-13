@@ -11,12 +11,14 @@
             @forelse($notes as $note) 
                 <div class="text-white bg-gray-700 p-4 mb-4 rounded-lg">
                     <h3 class="text-xl font-semibold">{{ $note->title }}</h3>
-                    <p class="text-lg">{{ $note->text }}</p>
+                    <p class="text-lg">{{ Str::limit($note->text, 50) }}</p>
                     <span class="block mt-4"> {{ $note->updated_at->diffForHumans() }}</span>
                 </div>
             @empty
             <p class="text-lg font-semibold mt-4 mb-4 text-center text-white">You do not have any records yet</p>
             @endforelse
+
+            {{ $notes->links() }}
         </div>
     </div>
 </div>
